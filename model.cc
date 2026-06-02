@@ -17,6 +17,8 @@ Model::Model(string code_name, string cpu, int ram,
   this->isWorkstation = is_workstation;
 }
 
+string Model::codenameGet() const {return this->codename;}
+
 ostream& operator<<(ostream& os, const Model& m) {
   os << "Nazwa kodowa: " << m.codename << ";\n"
      << "Model procesora: " << m.cpuModel << ";\n"

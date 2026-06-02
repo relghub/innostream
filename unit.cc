@@ -6,10 +6,10 @@
 
 using namespace std;
 
-Unit::Unit(string service_tag, Model base_model, Status status,
+Unit::Unit(string service_tag, const Model* base_model_ptr, Status status,
            string timestamp) {
   this->serviceTag = service_tag;
-  this->baseModel = base_model;
+  this->baseModel = base_model_ptr;
   this->currentStatus = status;
   this->orderTimestamp = timestamp;
 }
@@ -33,7 +33,7 @@ void Unit::statusSwitch(Status status) { this->currentStatus = status; }
 
 ostream &operator<<(ostream &os, const Unit &u) {
   os << "Service Tag: " << u.serviceTag << ";\n"
-       //<< "Model podstawowy: " << baseModel << ";\n"
+     << "Model podstawowy: " << (u.baseModel == nullptr ? "BRAK" : u.baseModel->codenameGet()) << ";\n"
        << "Status: " << u.statusConversion(u.currentStatus) << ";\n"
        << "Czas otrzymania zamowienia: " << u.orderTimestamp
        << ";\n"; // do rozbudowania z osobna klasa

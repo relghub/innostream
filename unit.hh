@@ -10,12 +10,12 @@ enum Status { ORDERED, IN_PROGRESS, COMPLETED, CANCELED };
 class Unit {
 private:
   std::string serviceTag;
-  Model baseModel;
+  const Model* baseModel;
   Status currentStatus;
   std::string orderTimestamp;
 
 public:
-  Unit(std::string service_tag = "000000", Model base_model = Model(), 
+  Unit(std::string service_tag = "000000", const Model* base_model = nullptr, 
        Status status = ORDERED, std::string timestamp = "2000-01-01 00:00:00");
 
   std::string statusConversion(const Status status) const;
