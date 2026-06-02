@@ -1,23 +1,30 @@
 #include <vector>
 
 #include "model.hh"
+#include "unit.hh"
 
 using namespace std;
 
 
 int main() {
 
-  // Model model1 = {"KF0", "Champion", "IO760", IN_PROGRESS, "2026-05-11 10:32:01", 32, false};
-  // Model model2 = {"0D4", "Switezsj", "IO960T", CANCELED, "2026-04-29 18:59:21",                  256,   true};
-
   vector<Model> model_list = {
-      {"KF0", "Champion", "IO760", ORDERED, "2026-05-11 10:32:01", 32, false},
-      {"0D4", "Switezsj", "IO960T", ORDERED, "2026-04-29 18:59:21", 256, true},
-      {"Z11", "Adrszpach", "IO270", ORDERED, "2026-05-11 11:32:42", 64, false}};
+      {"Champion", "IO760", 32, false},
+      {"Switezsj", "IO960T", 256, true},
+      {"Adrszpach", "IO270", 64, false}};
 
-  for (long unsigned int i = 0; i < model_list.size(); i++) {
-    model_list[i].statusSwitch(IN_PROGRESS);
+  vector<Unit> unit_list = {
+    {"KF0", model_list[0], ORDERED, "2026-05-11 10:32:01"},
+    {"0D4", model_list[1], ORDERED, "2026-04-29 18:59:21"},
+    {"Z11", model_list[2], ORDERED, "2026-05-11 11:32:42"},
+    //{"000", ORDERED, "2026-05-31 23:59:59"},
+    //{"CRT", model_list[1], ORDERED, "2026-06-02 22:20:24"}
+  };
+  
+  for (long unsigned int i = 0; i < unit_list.size(); i++) {
+    unit_list[i].statusSwitch(IN_PROGRESS);
     model_list[i].printSpec();
+    unit_list[i].printSpec();
   }
   
   
