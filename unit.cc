@@ -14,7 +14,7 @@ Unit::Unit(string service_tag, Model base_model, Status status,
   this->orderTimestamp = timestamp;
 }
 
-string Unit::statusConversion(Status status) {
+string Unit::statusConversion(const Status status) const {
   switch (status) {
   case ORDERED:
     return "Zamowiono";
@@ -31,9 +31,11 @@ string Unit::statusConversion(Status status) {
 
 void Unit::statusSwitch(Status status) { this->currentStatus = status; }
 
-void Unit::printSpec() {
-  cout << "Service Tag: " << serviceTag << ";\n"
-     //<< "Model podstawowy: " << baseModel << ";\n"
-       << "Status: " << statusConversion(currentStatus) << ";\n"
-       << "Czas otrzymania zamowienia: " << orderTimestamp << ";\n"; // do rozbudowania z osobna klasa
+ostream &operator<<(ostream &os, const Unit &u) {
+  os << "Service Tag: " << u.serviceTag << ";\n"
+       //<< "Model podstawowy: " << baseModel << ";\n"
+       << "Status: " << u.statusConversion(u.currentStatus) << ";\n"
+       << "Czas otrzymania zamowienia: " << u.orderTimestamp
+       << ";\n"; // do rozbudowania z osobna klasa
+  return os;
 }

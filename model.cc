@@ -17,9 +17,11 @@ Model::Model(string code_name, string cpu, int ram,
   this->isWorkstation = is_workstation;
 }
 
-void Model::printSpec() {
-  cout << "Nazwa kodowa: " << codename << ";\n"
-       << "Model procesora: " << cpuModel << ";\n"
-       << "Ilosc pamieci operacyjnej: " << ramQuantity << " GB;\n"
-       << (isWorkstation ? "Stacja robocza" : "Serwer rackowy") << "\n";
+ostream& operator<<(ostream& os, const Model& m) {
+  os << "Nazwa kodowa: " << m.codename << ";\n"
+     << "Model procesora: " << m.cpuModel << ";\n"
+     << "Ilosc pamieci operacyjnej: " << m.ramQuantity << " GB;\n"
+     << (m.isWorkstation ? "Stacja robocza" : "Serwer rackowy") << "\n";
+  return os;
 }
+

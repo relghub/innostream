@@ -1,6 +1,7 @@
 #ifndef MODEL_CLASS
 #define MODEL_CLASS
 
+#include <ostream>
 #include <string>
 
 class Model {
@@ -16,8 +17,8 @@ public:
         std::string cpu = "GENUINEANY",
         int ram = 0,
         bool is_workstation = false);
-  
-  void printSpec();
+
+  friend std::ostream& operator<<(std::ostream& os, const Model& m);
 };
 
 

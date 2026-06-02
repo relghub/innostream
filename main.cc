@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 
 #include "model.hh"
@@ -23,8 +24,8 @@ int main() {
   
   for (long unsigned int i = 0; i < unit_list.size(); i++) {
     unit_list[i].statusSwitch(IN_PROGRESS);
-    model_list[i].printSpec();
-    unit_list[i].printSpec();
+    cout << model_list[i] << endl;
+    cout << unit_list[i] << endl;
   }
   
   
