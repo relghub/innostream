@@ -2,6 +2,7 @@
 #define UNIT_CLASS
 
 #include <string>
+#include <chrono>
 
 #include "model.hh"
 
@@ -12,15 +13,17 @@ private:
   std::string serviceTag;
   const Model* baseModel;
   Status currentStatus;
-  std::string orderTimestamp;
+  std::chrono::time_point<std::chrono::system_clock> orderTimestamp;
 
 public:
   Unit(std::string service_tag = "000000", const Model* base_model = nullptr, 
-       Status status = ORDERED, std::string timestamp = "2000-01-01 00:00:00");
+       Status status = ORDERED, std::chrono::time_point<std::chrono::system_clock> timestamp = std::chrono::system_clock::now());
 
   std::string statusConversion(const Status status) const;
   void statusSwitch(Status status);
 
+  long long getAgeInSeconds() const;
+  
   friend std::ostream& operator<<(std::ostream& os, const Unit& u);
 };
 

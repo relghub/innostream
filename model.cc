@@ -6,15 +6,12 @@
 using namespace std;
 
 Model::Model(string code_name, string cpu, int ram,
-             bool is_workstation) {
-  this->codename = code_name;
-  this->cpuModel = cpu;
+             bool is_workstation): codename(code_name), cpuModel(cpu), isWorkstation(is_workstation) {
   if (ram >= 0) {
     this->ramQuantity = ram;
   } else {
     throw invalid_argument("Podano ujemna ilosc pamieci operacyjnej w modelu.");
   }
-  this->isWorkstation = is_workstation;
 }
 
 string Model::codenameGet() const {return this->codename;}

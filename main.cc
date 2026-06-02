@@ -15,11 +15,11 @@ int main() {
       {"Adrszpach", "IO270", 64, false}};
 
   vector<Unit> unit_list = {
-    {"KF0", &model_list[0], ORDERED, "2026-05-11 10:32:01"},
-    {"0D4", &model_list[1], ORDERED, "2026-04-29 18:59:21"},
-    {"Z11", &model_list[2], ORDERED, "2026-05-11 11:32:42"},
-    {"000", nullptr, ORDERED, "2026-05-31 23:59:59"},
-    {"CRT", &model_list[1], ORDERED, "2026-06-02 22:20:24"},
+    {"KF0", &model_list[0], ORDERED},
+    {"0D4", &model_list[1], ORDERED},
+    {"Z11", &model_list[2], ORDERED},
+    {"000", nullptr, ORDERED},
+    {"CRT", &model_list[1], ORDERED},
     {}
   };
   
